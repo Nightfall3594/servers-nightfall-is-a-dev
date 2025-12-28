@@ -1,16 +1,11 @@
 import {NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
 
-interface Game {
-    title: string,
-    image: string,
-    link: string
-}
 
-export default function GameNavLink({game}: {game: Game}) {
+export default function SidebarLink({title, Icon, link} : {title: string, Icon: React.ElementType, link: string}) {
     return (
         <NavLink
-            to={game.link}
+            to={link}
             className={({ isActive }) =>
                 `flex flex-row justify-start items-center p-3 w-full transition-all duration-250 ease-in-out relative
                     ${isActive
@@ -24,8 +19,8 @@ export default function GameNavLink({game}: {game: Game}) {
                         <motion.div layoutId="nav-bg" className="w-[95%] h-full bg-neutral-300 absolute -z-10 rounded-r-2xl shadow-3xl"/>
                     )}
 
-                    <img src={game.image} alt="minecraft_logo" className="w-12 h-9"/>
-                    {game.title}
+                    <Icon/>
+                    {title}
                 </>
             )}
         </NavLink>

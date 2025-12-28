@@ -1,7 +1,7 @@
 import type {User} from "../../../types/user.ts";
 import pfp from "../../../assets/pfp.jpg";
 import mc from "../../../assets/minecraft.png";
-import GameNavLink from "./GameNavLink.tsx";
+import SidebarLink from "./SidebarLink.tsx";
 
 
 const activeGames: {title: string, image: string, link: string}[] = [
@@ -35,7 +35,7 @@ const activeGames: {title: string, image: string, link: string}[] = [
     },
 ]
 
-export default function GameNav({currentUser}: {currentUser: User}) {
+export default function Sidebar({currentUser}: {currentUser: User}) {
 
     return (
         <nav className="bg-neutral-800 shadow-md min-w-60 h-screen flex flex-col items-center justify-between mb-8 fixed">
@@ -56,12 +56,8 @@ export default function GameNav({currentUser}: {currentUser: User}) {
                 <h1 className="font-bold px-6 mt-3 mb-4 text-2xl">Games</h1>
                 <div className="flex flex-col items-start justify-start w-full h-full overflow-visible">
 
-                    {/* Active background */}
-                    {
-                        activeGames.map((game) => {
-                            return <GameNavLink game={game}/>
-                        })
-                    }
+                    {/*<SidebarLink title={"Home"} Icon={} link={"/home"}/>*/}
+
                 </div>
             </div>
 
