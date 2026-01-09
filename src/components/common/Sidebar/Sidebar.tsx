@@ -1,5 +1,5 @@
 import type {User} from "../../../types/user.ts";
-import pfp from "../../../assets/pfp.jpg";
+import pfp from "../../../../my-app/public/pfp.jpg";
 import SidebarLink from "./SidebarLink.tsx";
 import HomeIcon from "../icons/sidebar/Home.tsx";
 import ConsoleIcon from "../icons/sidebar/Console.tsx";
