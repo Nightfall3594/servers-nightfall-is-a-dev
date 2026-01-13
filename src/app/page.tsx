@@ -1,19 +1,55 @@
 "use client";
 import ServerStatusCard from "@/components/dashboard-page/ServerStatusCard.tsx";
 import ServerMetricCard from "@/components/dashboard-page/ServerMetricCard.tsx";
-import ToolIcon from "@/components/common/icons/sidebar/Tools.tsx";
 import PeopleIcon from "@/components/common/icons/server-stats/PeopleIcon.tsx";
 import ClockIcon from "@/components/common/icons/server-stats/ClockIcon.tsx";
 import PulseIcon from "@/components/common/icons/server-stats/PulseIcon.tsx";
 import CpuIcon from "@/components/common/icons/server-stats/CpuIcon.tsx";
 import ServerMetricBarCard from "@/components/dashboard-page/ServerMetricBarCard.tsx";
 import DiskIcon from "@/components/common/icons/server-stats/DiskIcon.tsx";
+import TitledCard from "@/components/common/cards/TitledCard.tsx";
 
 export default function UserDashboard() {
 
     // TODO: convert to state later
     const isOnline = true;
     // const [isOnline, setOnline] = useState(true);
+
+    // more mock data
+    const currentOnlinePlayers = [
+        {
+            name: "HelloWorld",
+            totalDuration: "20m"
+        },
+        {
+            name: "HelloWorld2",
+            totalDuration: "1m"
+        },
+        {
+            name: "HelloWorld3",
+            totalDuration: "2h 30m"
+        },
+    ]
+
+    // more mock data
+    const mockEventData = [
+        {
+            event: "HelloWorld1 left the game",
+            time: "20m ago"
+        },
+        {
+            event: "HelloWorld1 joined the game",
+            time: "20m ago"
+        },
+        {
+            event: "HelloWorld2 joined the game",
+            time: "1m ago"
+        },
+        {
+            event: "HelloWorld3 joined the game",
+            time: "2h 30m ago"
+        },
+    ]
 
     return (
         <section className="ml-60 p-30 flex flex-1 flex-col min-h-screen ">
@@ -97,6 +133,42 @@ export default function UserDashboard() {
                     iconColor={"text-green-600"}
                     barColor={"bg-green-600"}
                 />
+            </div>
+
+            <div className="flex flex-row mt-6 gap-2">
+                <TitledCard title={"Online Players"} Icon={PeopleIcon}>
+                    <ul className="flex flex-col gap-1.5">
+                        {
+                            currentOnlinePlayers.map((player, index) => {
+                                return (
+                                    <li className="px-3 py-2 rounded-md flex justify-between items-center bg-neutral-700/60" key={index}>
+                                        <p>{player.name}</p>
+                                        <p className={"text-xs text-neutral-400"}>
+                                            {player.totalDuration}
+                                        </p>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </TitledCard>
+
+                <TitledCard title={"Recent Activity"} Icon={DiskIcon}>
+                    <ul className="flex flex-col gap-2" >
+                        {mockEventData.map(({event, time}, index) => {
+                            return (
+                                <li className="px-3 py-2 rounded-md flex items-start gap-2 " key={index}>
+                                    <div className="w-2 h-2 rounded-full bg-green-400/60 mt-1.5 "/>
+                                    <div className="flex flex-col justify-center gap-1">
+                                        <p className={"text-sm"}>{event}</p>
+                                        <p className={"text-xs text-neutral-500"}>
+                                            {time}
+                                        </p>
+                                    </div>
+                                </li>
+                            )})}
+                    </ul>
+                </TitledCard>
             </div>
 
         </section>
