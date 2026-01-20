@@ -1,8 +1,6 @@
 "use client";
 import ModCard from "../../components/mods-page/ModCard.tsx";
-import {PopupModal} from "../../components/common/Popup/PopupModal.tsx";
-import {useState} from "react";
-import ModUploadArea from "../../components/mods-page/UploadMod.tsx";
+import UploadIcon from "@/components/common/icons/mods-page/UploadIcon.tsx";
 
 export type Mod = {
     id: string;
@@ -10,6 +8,11 @@ export type Mod = {
     uploadedOn: string;
     fileSize?: number;
 };
+
+// TODO: handle file upload
+function handleFileUpload(file: File) {
+    console.log(file)
+}
 
 export default function ModsPage() {
 
@@ -20,12 +23,10 @@ export default function ModsPage() {
         { id: '3', name: 'Mod Three', fileSize: 75, uploadedOn: '2026-01-13' },
     ]
 
-    const [isUploadModalVisible, setUploadModalVisible] = useState<boolean>(false);
-
     return (
         <section className="ml-60 p-30 flex flex-col flex-1 h-screen gap-8">
 
-            <div className="flex justify-between items-center w-full ">
+            <div className="flex justify-between items-end w-full ">
                 <div className="flex flex-col items-start justify-center gap-2">
                     <h1 className="text-4xl font-bold text-center ">
                         Mods
@@ -34,14 +35,24 @@ export default function ModsPage() {
                         Upload and manage your mods here.
                     </h2>
                 </div>
-                <div className="flex flex-row ">
-                    <button
-                        onClick={() => setUploadModalVisible(true)}
-                        className="bg-cyan-700 text-white px-3 py-1.5 rounded mr-2 "
-                    >
-                        Add Mod
-                    </button>
-                    <button className="bg-teal-700 text-white px-3 py-1.5 rounded ">Refresh Mods</button>
+                <div className="flex flex-row gap-2">
+                    <label className="bg-blue-500/60 px-3 py-2 rounded-lg flex flex-row gap-3 items-center">
+                        <input
+                            type="file"
+                            hidden
+                            accept=".jar"
+                            onChange={(e) => {
+                                if (e.target.files) {
+                                    handleFileUpload(e.target.files[0])
+                                    e.target.value = '';
+                                }
+                            }}
+                        />
+
+                        <UploadIcon className="w-4 h-4 "/>
+
+                        <p className="text-white text-md ">Upload Mod (.jar)</p>
+                    </label>
                 </div>
             </div>
 
@@ -49,19 +60,15 @@ export default function ModsPage() {
             <ul className="flex flex-col p-0">
                 {
                     mockMods.map((mod: Mod, index) => {
-                        return <ModCard key={index} mod={mod} onRemove={() => {}} onDownload={() => {}}/>
+                        return <ModCard
+                            key={index}
+                            mod={mod}
+                            onRemove={() => {}}
+                            onDownload={() => {}}
+                        />
                     })
                 }
             </ul>
-
-            <PopupModal
-                isOpen={isUploadModalVisible}
-                onClose={() => setUploadModalVisible(false)}
-                title={"Upload"}
-            >
-                <ModUploadArea/>
-            </PopupModal>
-
         </section>
     );
 }
