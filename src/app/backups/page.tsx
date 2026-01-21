@@ -22,7 +22,7 @@ export default function BackupsPage() {
                     <p className="text-neutral-400">Download your server world files</p>
                 </div>
 
-                <Card className="max-w-3xl p-8 flex flex-col gap-6 bg-neutral-900 border border-neutral-800 rounded-2xl">
+                <Card className="max-w-3xl p-8 flex flex-col gap-6 bg-neutral-800 border border-neutral-700 rounded-2xl">
                     {/* Header */}
                     <div className="flex items-center gap-4">
                         <div className="bg-blue-500/10 p-4 rounded-xl">
@@ -37,17 +37,17 @@ export default function BackupsPage() {
 
                     {/* Stats */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div className="bg-neutral-800/60 rounded-xl p-4">
+                        <div className="bg-neutral-700/60 rounded-xl p-4">
                             <p className="text-sm text-neutral-400">World Size</p>
                             <p className="text-lg font-semibold">{world.size}</p>
                         </div>
 
-                        <div className="bg-neutral-800/60 rounded-xl p-4">
+                        <div className="bg-neutral-700/60 rounded-xl p-4">
                             <p className="text-sm text-neutral-400">Last Modified</p>
                             <p className="text-lg font-semibold">{world.lastModified}</p>
                         </div>
 
-                        <div className="bg-neutral-800/60 rounded-xl p-4">
+                        <div className="bg-neutral-700/60 rounded-xl p-4">
                             <p className="text-sm text-neutral-400">World Seed</p>
                             <p className="text-sm font-mono break-all">{world.seed}</p>
                         </div>
