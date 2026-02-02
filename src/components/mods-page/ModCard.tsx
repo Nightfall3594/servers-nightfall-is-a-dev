@@ -5,7 +5,7 @@ import DownloadIcon from "@/components/common/icons/common/DownloadIcon.tsx";
 export type Mod = {
     id: string;
     name: string;
-    uploadedOn: string;
+    version: string;
     fileSize?: number;
 };
 
@@ -38,7 +38,7 @@ export default function ModCard({ mod, onRemove, onDownload }: ModCardProps) {
                             </span>
                         )}
                         <span className="text-xs text-neutral-400">
-                            Uploaded on {mod.uploadedOn}
+                            Uploaded on {mod.version}
                         </span>
                     </div>
                 </div>

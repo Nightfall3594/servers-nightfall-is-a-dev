@@ -5,7 +5,7 @@ import UploadIcon from "@/components/common/icons/mods-page/UploadIcon.tsx";
 export type Mod = {
     id: string;
     name: string;
-    uploadedOn: string;
+    version: string;
     fileSize?: number;
 };
 
@@ -18,9 +18,9 @@ export default function ModsPage() {
 
     // Mock mods-page, for now.
     const mockMods: Mod[] = [
-        { id: '1', name: 'Mod One', fileSize: 150, uploadedOn: '2026-01-11' },
-        { id: '2', name: 'Mod Two', uploadedOn: '2026-01-12' },
-        { id: '3', name: 'Mod Three', fileSize: 75, uploadedOn: '2026-01-13' },
+        { id: '1', name: 'Mod One', fileSize: 150, version: 'forge-0.9.18' },
+        { id: '2', name: 'Mod Two', version: '3.21.16' },
+        { id: '3', name: 'Mod Three', fileSize: 75, version: '1.21.10' },
     ]
 
     return (
